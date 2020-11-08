@@ -65,7 +65,7 @@ export default class BookingFlights extends Component {
 
       onSubmit(e){
           e.preventDefault()
-          //window.location='/flights'
+          window.location='/flights'
           const bookflight = {OneWay:this.state.isRadioSelected,depdate:this.state.startDate,arrdate:this.state.endDate,from:this.state.from,to:this.state.to,number:this.state.number}
           console.log(bookflight)
       }
@@ -76,7 +76,7 @@ export default class BookingFlights extends Component {
           <div className="./book-flights.css"></div>
             <div className="box">
              <div className="arrange">
-              <h1 className="subheading">JAS Airways</h1>
+              <h1 className="subheading">JAS Travels</h1>
               <h3>Book Flights</h3>
               <form onSubmit={this.onSubmit}>
                 <div className="row">
