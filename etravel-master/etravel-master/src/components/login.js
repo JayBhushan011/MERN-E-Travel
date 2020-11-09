@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import axios from 'axios'
 import './login.css'
 import 'jquery/dist/jquery.min.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
@@ -26,10 +26,12 @@ export default class Login extends Component {
     onSubmit(e){
         e.preventDefault()
 
-        const login={username:this.state.username,password:this.state.password}
-        console.log(login)
+        const user={username:this.state.username,password:this.state.password}
+        console.log(user)
+        axios.post('http://localhost:5000/user/add',user)
+          .then(res=>console.log(res.data))
 
-        window.location='/loggedin'
+        //window.location='/loggedin'
     }
 
   render() {
