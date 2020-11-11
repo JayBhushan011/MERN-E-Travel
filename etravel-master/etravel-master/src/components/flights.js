@@ -4,10 +4,6 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 
 export default class Flights extends Component {
   render() {
-    return (
-      <div>
-          <h3>Here, you will see the list of flights!</h3>
-      </div>
-    )
-  }
+  return(<h1>List of flights</h1>)
+ }
 }
