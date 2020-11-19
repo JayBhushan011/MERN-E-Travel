@@ -11,7 +11,7 @@ export default class Home extends Component {
   }
 
   onClick(e) {
-    window.location='/book-flights'
+    window.location='/book-hotels'
     e.preventDefault()
   }
 
@@ -19,7 +19,7 @@ export default class Home extends Component {
     return (
       <div>
         <div className="./home-page.component.css"></div>
-        <div onClick={this.onClick} className="wrapper"><button className="BUTTON_WHZ" name="Book" type="submit" value="Book Flights">Book Flights</button></div>
+        <div onClick={this.onClick} className="wrapper"><button className="BUTTON_WHZ" name="Book" type="submit" value="Book Hotels">Book Hotels</button></div>
         <footer className="bottom-container">
           <p className="structure">
             <a className="footer-link" href="/">Playstore</a>

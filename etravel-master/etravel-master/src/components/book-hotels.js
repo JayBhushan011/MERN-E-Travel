@@ -46,7 +46,7 @@ export default class BookingFlights extends Component {
 
       onSubmit(e){
           e.preventDefault()
-          window.location='/flights'
+          window.location='/hotels'
           const bookflight = {checkin:this.state.startDate,checkout:this.state.endDate,location:this.state.location,number:this.state.number}
           console.log(bookflight)
       }
@@ -55,7 +55,7 @@ export default class BookingFlights extends Component {
     return (
         <div>
           <div className="./book-hotels.css"></div>
-            <div className="box">
+            <div className="box container">
              <div className="arrange">
               <h1 className="subheading">JAS Travels</h1>
               <h3>Book Hotels</h3>
@@ -66,7 +66,7 @@ export default class BookingFlights extends Component {
               <div className="col-auto my-1">
               <select className="custom-select mr-sm-2" onChange={this.onChangeLocation} required>
                 <option selected disabled value="">Where are you going?</option>
-                <option value="Delhi">Delhi (DEL)</option>
+                <option value="New Delhi">New Delhi</option>
                 <option value="Hyderabad">Hyderabad (HYD)</option>
                 <option value="Bengaluru">Bengaluru (BGL)</option>
                 <option value="Chennai">Chennai (CHE)</option>
@@ -83,6 +83,7 @@ export default class BookingFlights extends Component {
                   </div>
                     <div className="col">
                       <label>Check Out Date *</label>
+                      <br/>
                       <DatePicker required selected={this.state.endDate} showMonthDropdown className="calendar" endDate={this.state.endDate} onChange={this.handleChange2} showYearDropdown name="enddate" dateFormat="dd/MM/yyyy" selectsEnd startDate={this.state.endtDate} endDate={this.state.endDate} minDate={this.state.startDate} placeholder="Arrival Date"/>
                     </div>
                   </div>
