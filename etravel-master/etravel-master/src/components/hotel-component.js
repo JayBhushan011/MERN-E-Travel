@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ReactStars from "react-rating-stars-component"
 import 'jquery/dist/jquery.min.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import './hotel-component.css'
