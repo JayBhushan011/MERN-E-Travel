@@ -30,6 +30,9 @@ app.use('/trip', tripRouter);
 const userRouter = require('./routes/user');
 app.use('/user', userRouter);
 
+const hotelRouter = require('./routes/hotel');
+app.use('/hotel', hotelRouter);
+
 
 app.get("/", function(request, response) {
   response.send("<h1>Hello World!</h1>");
