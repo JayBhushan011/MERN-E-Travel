@@ -1,10 +1,12 @@
 const router = require('express').Router();
 let Hotel = require('../models/hotel.model')
 
-var location = "New Delhi";
+var searchParameters;
+
+var location = "New Delhi";  // DEFAULT VALUES
 var country = "India";
 var minRating =  0;
-var maxPrice = 100000000;
+var maxPrice = 1000000000000000;
 
 var searchParameters = {
   "location" : location,
@@ -23,14 +25,27 @@ router.route('/search').post((req,res) => {
   var location = req.body.location;
   var country = req.body.country;
   var minRating = parseFloat(req.body.minRating);
-  var maxPrice = Number(req.body.maxPrice);
+  var inputMaxPrice = Number(req.body.maxPrice);
 
-  searchParameters = {
-    "location" : location,
-    "country" : country,
-    "rating" : {$gte: minRating},
-    "price" : {$lte: maxPrice }
-  };
+  if (req.body.maxPrice){
+    searchParameters = {
+      "location" : location,
+      "country" : country,
+      "rating" : {$gte: minRating},
+      "price" : {$lte: inputMaxPrice }
+    };
+  }
+  else{
+    searchParameters = {
+      "location" : location,
+      "country" : country,
+      "rating" : {$gte: minRating},
+      "price" : {$lte: maxPrice }
+    };
+  }
+
+  console.log(searchParameters);
+
   res.redirect("/hotel/results")
 });
 
