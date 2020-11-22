@@ -24,28 +24,45 @@ router.route('/').get((req, res) => {
 router.route('/search').post((req,res) => {
   var location = req.body.location;
   var country = req.body.country;
-  var minRating = parseFloat(req.body.minRating);
+  var inputMinRating = parseFloat(req.body.minRating);
   var inputMaxPrice = Number(req.body.maxPrice);
 
-  if (req.body.maxPrice){
-    searchParameters = {
-      "location" : location,
-      "country" : country,
-      "rating" : {$gte: minRating},
-      "price" : {$lte: inputMaxPrice }
-    };
+  if (req.body.maxPrice){  // if max price is given
+    if (req.body.minRating){  // if min rating is given
+      searchParameters = {
+        "location" : location,
+        "country" : country,
+        "rating" : {$gte: inputMinRating},
+        "price" : {$lte: inputMaxPrice }
+      };
+    }
+    else{
+      searchParameters = {
+        "location" : location,
+        "country" : country,
+        "rating" : {$gte: minRating},
+        "price" : {$lte: inputMaxPrice }
+      };
+    }
   }
-  else{
-    searchParameters = {
-      "location" : location,
-      "country" : country,
-      "rating" : {$gte: minRating},
-      "price" : {$lte: maxPrice }
-    };
+  else{ // if max price is not given
+    if (req.body.minRating){  // if min rating is given
+      searchParameters = {
+        "location" : location,
+        "country" : country,
+        "rating" : {$gte: inputMinRating},
+        "price" : {$lte: maxPrice }
+      };
+    }
+    else{
+      searchParameters = {
+        "location" : location,
+        "country" : country,
+        "rating" : {$gte: minRating},
+        "price" : {$lte: maxPrice }
+      };
+    }
   }
-
-  console.log(searchParameters);
-
   res.redirect("/hotel/results")
 });
 
