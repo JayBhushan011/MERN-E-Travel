@@ -1,8 +1,6 @@
 const router = require('express').Router();
 let Hotel = require('../models/hotel.model')
 
-var searchParameters;
-
 var location = "New Delhi";  // DEFAULT VALUES
 //var country = "India";
 var minRating =  0;
@@ -63,8 +61,8 @@ router.route('/search').post((req,res) => {
       };
     }
   }
-  //res.redirect("/hotel/results")
-  res.send('Working');
+  res.redirect("/hotel/results")
+  // res.send('Working');
 });
 
 router.route('/results').get((req, res) => {

@@ -9,7 +9,7 @@ import axios from 'axios'
 export default class BookingFlights extends Component {
     constructor(props){
         super(props)
-            
+
             this.handleChange1 = this.handleChange1.bind(this)
             this.handleChange2 = this.handleChange2.bind(this)
             this.onChangeLocation = this.onChangeLocation.bind(this)
@@ -53,7 +53,7 @@ export default class BookingFlights extends Component {
           const bookflight = {"location":this.state.location}
           console.log(bookflight)
 
-          axios.post('https://localhost:5000/hotel/search',bookflight)
+          axios.post('http://localhost:5000/hotel/search',bookflight)
             .then(res=>console.log(res.data))
       }
 
