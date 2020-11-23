@@ -4,13 +4,13 @@ let Hotel = require('../models/hotel.model')
 var searchParameters;
 
 var location = "New Delhi";  // DEFAULT VALUES
-var country = "India";
+//var country = "India";
 var minRating =  0;
 var maxPrice = 1000000000000000;
 
 var searchParameters = {
   "location" : location,
-  "country" : country,
+  //"country" : country,
   "rating" : {$gte: minRating},
   "price" : {$lte: maxPrice }
 };
@@ -23,7 +23,7 @@ router.route('/').get((req, res) => {
 
 router.route('/search').post((req,res) => {
   var location = req.body.location;
-  var country = req.body.country;
+  //var country = req.body.country;
   var inputMinRating = parseFloat(req.body.minRating);
   var inputMaxPrice = Number(req.body.maxPrice);
 
@@ -31,7 +31,7 @@ router.route('/search').post((req,res) => {
     if (req.body.minRating){  // if min rating is given
       searchParameters = {
         "location" : location,
-        "country" : country,
+        //"country" : country,
         "rating" : {$gte: inputMinRating},
         "price" : {$lte: inputMaxPrice }
       };
@@ -39,7 +39,7 @@ router.route('/search').post((req,res) => {
     else{
       searchParameters = {
         "location" : location,
-        "country" : country,
+        //"country" : country,
         "rating" : {$gte: minRating},
         "price" : {$lte: inputMaxPrice }
       };
@@ -49,7 +49,7 @@ router.route('/search').post((req,res) => {
     if (req.body.minRating){  // if min rating is given
       searchParameters = {
         "location" : location,
-        "country" : country,
+        //"country" : country,
         "rating" : {$gte: inputMinRating},
         "price" : {$lte: maxPrice }
       };
@@ -57,13 +57,14 @@ router.route('/search').post((req,res) => {
     else{
       searchParameters = {
         "location" : location,
-        "country" : country,
+        //"country" : country,
         "rating" : {$gte: minRating},
         "price" : {$lte: maxPrice }
       };
     }
   }
-  res.redirect("/hotel/results")
+  //res.redirect("/hotel/results")
+  res.send('Working');
 });
 
 router.route('/results').get((req, res) => {

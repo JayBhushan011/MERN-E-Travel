@@ -4,6 +4,7 @@ import 'jquery/dist/jquery.min.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import axios from 'axios'
 
 export default class BookingFlights extends Component {
     constructor(props){
@@ -46,9 +47,14 @@ export default class BookingFlights extends Component {
 
       onSubmit(e){
           e.preventDefault()
-          window.location='/hotels'
-          const bookflight = {checkin:this.state.startDate,checkout:this.state.endDate,location:this.state.location,number:this.state.number}
+          //window.location='/hotels'
+          //checkin:this.state.startDate,checkout:this.state.endDate,
+          //,number:this.state.number
+          const bookflight = {"location":this.state.location}
           console.log(bookflight)
+
+          axios.post('https://localhost:5000/hotel/search',bookflight)
+            .then(res=>console.log(res.data))
       }
 
   render() {
