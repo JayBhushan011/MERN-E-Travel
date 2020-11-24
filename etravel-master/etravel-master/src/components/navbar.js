@@ -33,7 +33,7 @@ export default class Navbar extends Component {
                   <a class="nav-link" href="/login">Log In<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="/sign-up">Sign Up<span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="/register">Register<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
                   <a class="nav-link" href="/book-flights">Book Flights<span class="sr-only">(current)</span></a>

@@ -12,7 +12,8 @@ import BookFlights from "./components/book-flights"
 import Flights from "./components/flights"
 import BookHotels from "./components/book-hotels"
 import Hotels from "./components/hotels"
- 
+import Register from "./components/register"
+
 function App() {
  return (
    <Router>
@@ -26,8 +27,9 @@ function App() {
     <Route path="/flights" exact component={Flights}/>
     <Route path="/book-hotels" exact component={BookHotels}/>
     <Route path="/hotels" exact component={Hotels}/>
+    <Route path= "/register" exact component= {Register}/>
    </Router>
  );
 }
- 
+
 export default App;
