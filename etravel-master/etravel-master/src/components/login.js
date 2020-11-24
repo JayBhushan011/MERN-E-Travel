@@ -27,8 +27,18 @@ function Login() {
       },
       withCredentials: true,
       url: "http://localhost:5000/user/login",
-    }).then(res => console.log(res.data));
+    }).then(res => res.data)
+    .then(logininfo)
   };
+
+  const logininfo=(data)=>{
+    if(data==='Successfully Authenticated'){
+      window.location='/'
+    }
+    else{
+      alert('Invalid user data, please try again!')
+    }
+  }
   const getUser = () => {
     Axios({
       method: "GET",

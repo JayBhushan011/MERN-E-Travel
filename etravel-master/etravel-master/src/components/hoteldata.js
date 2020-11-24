@@ -36806,7 +36806,7 @@ const hotels=[
     },
     {
       "id": 3068,
-      "name": "Four Points by Sheraton Manhattan Chelsea Hotel, New York City",
+      "name": "Four Points by Sheraton Manhattan Chelsea Hotel",
       "country": "United States",
       "location": "New York City",
       "address": "160 W 25th St",
@@ -59234,7 +59234,7 @@ const hotels=[
     },
     {
       "id": 4937,
-      "name": "Doubletree By Hilton - Times Square South Hotel, New York City",
+      "name": "Doubletree By Hilton - Times Square South Hotel",
       "country": "United States",
       "location": "New York City",
       "address": "341 West 36th Street",

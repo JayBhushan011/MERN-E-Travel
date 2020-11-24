@@ -6,6 +6,7 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import axios from 'axios'
 import HotelComp from './hotel-component'
+import HotelData from './hoteldata'
 
 export default class BookingHotels extends Component {
     constructor(props){
@@ -17,6 +18,7 @@ export default class BookingHotels extends Component {
             this.onChangeNumber = this.onChangeNumber.bind(this)
             this.onChangeMinRating = this.onChangeMinRating.bind(this)
             this.onChangeMaxPrice = this.onChangeMaxPrice.bind(this)
+            this.onSelectRadio = this.onSelectRadio.bind(this)
 
             this.state = {
               startDate: new Date(),
@@ -25,7 +27,8 @@ export default class BookingHotels extends Component {
               number:1,
               minRating:1,
               maxPrice:100000000,
-              finalinfo:[]
+              finalinfo:[],
+              radio:false
             }
 
             this.onSubmit=this.onSubmit.bind(this)
@@ -57,6 +60,10 @@ export default class BookingHotels extends Component {
 
       onChangeMaxPrice(e){
         this.setState({maxPrice:e.target.value})
+      }
+
+      onSelectRadio(e){
+        this.setState({radio:true})
       }
 
       onSubmit(e){
@@ -362,12 +369,14 @@ export default class BookingHotels extends Component {
                       <input type="number" id="maxprice" name="maxprice" min="1" max="100000000" onChange={this.onChangeMaxPrice}></input>
                     </div>
                 </div>
+                <label for="sort">Sort by price?&nbsp;&nbsp;</label>
+                <input type="radio" onChange={this.onSelectRadio}></input>
                 <br/>
                   <button type="submit" value="search" className="btn btn-primary">Search Hotels</button>
                 </form>
               </div>
-              {this.state.finalinfo.length===0 && <h1>Please enter data</h1>}
-              {this.state.finalinfo.length>0 && this.state.finalinfo.map(hotel=><HotelComp key={hotel.id} name={hotel.name} country={hotel.country} imgurl={hotel.imgurl} url={hotel.url} location={hotel.location} address={hotel.address} rating={hotel.rating} ratingcount={hotel.ratingcount} price={hotel.price}/>)}
+              {this.state.radio===false &&this.state.finalinfo.sort((a,b)=>a.rating-b.rating).map(hotel=><HotelComp key={hotel.id} name={hotel.name} country={hotel.country} imgurl={hotel.imgurl} url={hotel.url} location={hotel.location} address={hotel.address} rating={hotel.rating} ratingcount={hotel.ratingcount} price={hotel.price}/>)}
+              {this.state.radio===true &&this.state.finalinfo.sort((a,b)=>a.price-b.price).map(hotel=><HotelComp key={hotel.id} name={hotel.name} country={hotel.country} imgurl={hotel.imgurl} url={hotel.url} location={hotel.location} address={hotel.address} rating={hotel.rating} ratingcount={hotel.ratingcount} price={hotel.price}/>)}
             </div>
           </div>
     )

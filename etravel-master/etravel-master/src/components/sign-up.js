@@ -108,7 +108,28 @@ onChangePassword(e){
 
     const signup={title:this.state.username,gender:this.state.gender,fname:this.state.fname,lname:this.state.lname,name:this.state.name,dob:this.state.dob,ped:this.state.ped,pnum:this.state.pnum,tdoc:this.state.tdoc,add1:this.state.add1,add2:this.state.add2,city:this.state.city,state:this.state.state,zcode:this.state.zcode,mobile:this.state.mobile,email:this.state.email,username:this.state.username,password:this.state.password}
     console.log(signup)
+    Axios({
+      method: "POST",
+      data: {
+        "username": this.state.username,
+        "password": this.state.password,
+      },
+      url: "http://localhost:5000/user/add",
+    })
+    .then(res => res.data)
+    .then(this.userinfo)
+    .catch()
   }
+  userinfo=(data)=>{
+    if(data==="User Already Exists"){
+      alert('Username unavailable. Please try another one')
+    }
+    else{
+      window.location='/login'
+      alert('Your account has been created')
+    }
+  }
+  
   render() {
     const selectionRange = {
       startDate: new Date(),

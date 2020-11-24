@@ -26,7 +26,7 @@ export default function HotelComp(props){
               <div className="column" id="shift">
               <button type="submit" value="book" className="btn btn-primary">Book now</button>
               <br/>
-              <span className="price">₹ {props.price} /per night</span>
+              <span className="price">₹ {props.price} /night/room</span>
               </div>
               </div>
           </div>
