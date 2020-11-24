@@ -15,12 +15,16 @@ export default class BookingFlights extends Component {
             this.handleChange2 = this.handleChange2.bind(this)
             this.onChangeLocation = this.onChangeLocation.bind(this)
             this.onChangeNumber = this.onChangeNumber.bind(this)
+            this.onChangeMinRating = this.onChangeMinRating.bind(this)
+            this.onChangeMaxPrice = this.onChangeMaxPrice.bind(this)
 
             this.state = {
               startDate: new Date(),
               endDate: new Date(),
               location:'',
               number:1,
+              minRating:1,
+              maxPrice:100000000,
               finalinfo:[]
             }
 
@@ -47,9 +51,17 @@ export default class BookingFlights extends Component {
         this.setState({number:e.target.value})
       }
 
+      onChangeMinRating(e){
+        this.setState({minRating:e.target.value})
+      }
+
+      onChangeMaxPrice(e){
+        this.setState({maxPrice:e.target.value})
+      }
+
       onSubmit(e){
           e.preventDefault()
-          const searchinfo={location:this.state.location,checkin:this.state.startDate,checkout:this.state.endDate,number:this.state.number}
+          const searchinfo={minRating:this.state.minRating,maxPrice:this.state.maxPrice,location:this.state.location,checkin:this.state.startDate,checkout:this.state.endDate,number:this.state.number}
           axios.post('http://localhost:5000/hotel/search',searchinfo)
           .then(res=>res.data)
           .then(this.buildlist)
@@ -339,6 +351,18 @@ export default class BookingFlights extends Component {
                       <input required type="number" id="numpassengers" name="numpassengers" min="1" max="20" onChange={this.onChangeNumber}></input>
                     </div>
                   </div>
+                <div className="center">
+                  <label for="minrating">Minimum Rating (1-5)</label>
+                    <div className="col-auto my-1">
+                      <input type="number" id="minrating" name="minrating" min="1" max="5" onChange={this.onChangeMinRating}></input>
+                    </div>
+                </div>
+                <div className="center">
+                  <label for="maxprice">Maximum Price</label>
+                    <div className="col-auto my-1">
+                      <input type="number" id="maxprice" name="maxprice" min="1" max="100000000" onChange={this.onChangeMaxPrice}></input>
+                    </div>
+                </div>
                 <br/>
                   <button type="submit" value="search" className="btn btn-primary">Search Hotels</button>
                 </form>

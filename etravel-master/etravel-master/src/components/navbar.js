@@ -36,13 +36,7 @@ export default class Navbar extends Component {
                   <a class="nav-link" href="/sign-up">Sign Up<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="/book-flights">Book Flights<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
                   <a class="nav-link" href="/book-hotels">Book Hotels<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="/book-cabs">Book Cabs<span class="sr-only">(current)</span></a>
                 </li>
               </ul>
               <form className="form-inline my-2 my-lg-0">
