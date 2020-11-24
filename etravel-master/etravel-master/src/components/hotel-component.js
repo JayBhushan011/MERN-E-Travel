@@ -32,4 +32,4 @@ export default function HotelComp(props){
           </div>
       </div>
   )
- }
+  }

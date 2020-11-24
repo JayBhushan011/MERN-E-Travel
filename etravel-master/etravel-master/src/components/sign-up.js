@@ -4,7 +4,7 @@ import 'jquery/dist/jquery.min.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-// import Axios from 'axios'
+import Axios from 'axios'
 
 export default class Signup extends Component {
   constructor(props){
@@ -33,7 +33,7 @@ export default class Signup extends Component {
     this.state={minDate:new Date(),maxDate:new Date(), title:null,gender:null,fname:'',lname:'',dob:new Date(),zcode:0,pnum:'',ped:new Date(),tdoc:null,add1:'',add2:'',city:'',state:null,mobile:0,email:'',username:'',password:''}
 
   }
-
+  
   onChangeTitle(e){
     this.setState({title:e.target.value})
 }
@@ -108,8 +108,6 @@ onChangePassword(e){
 
     const signup={title:this.state.username,gender:this.state.gender,fname:this.state.fname,lname:this.state.lname,name:this.state.name,dob:this.state.dob,ped:this.state.ped,pnum:this.state.pnum,tdoc:this.state.tdoc,add1:this.state.add1,add2:this.state.add2,city:this.state.city,state:this.state.state,zcode:this.state.zcode,mobile:this.state.mobile,email:this.state.email,username:this.state.username,password:this.state.password}
     console.log(signup)
-
-
   }
   render() {
     const selectionRange = {

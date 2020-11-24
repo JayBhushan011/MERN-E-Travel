@@ -7,7 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import axios from 'axios'
 import HotelComp from './hotel-component'
 
-export default class BookingFlights extends Component {
+export default class BookingHotels extends Component {
     constructor(props){
         super(props)
         
@@ -69,7 +69,6 @@ export default class BookingFlights extends Component {
       }
 
       buildlist=(data)=>{
-        console.log(data)
         this.setState({finalinfo:data})
       }
   render() {

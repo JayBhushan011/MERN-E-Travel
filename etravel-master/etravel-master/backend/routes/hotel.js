@@ -61,7 +61,7 @@ router.route('/search').post((req,res) => {
       };
     }
   }
-  res.send("go to results");
+  res.redirect('/hotel/results');
 });
 
 router.route('/results').get((req, res) => {
