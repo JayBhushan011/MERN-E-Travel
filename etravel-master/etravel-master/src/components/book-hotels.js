@@ -5,10 +5,8 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import axios from 'axios'
-
 import HotelComp from './hotel-component'
-import HotelsData from './hoteldata'
-var bookflight
+
 export default class BookingFlights extends Component {
     constructor(props){
         super(props)
@@ -23,7 +21,7 @@ export default class BookingFlights extends Component {
               endDate: new Date(),
               location:'',
               number:1,
-              submitted:false
+              finalinfo:[]
             }
 
             this.onSubmit=this.onSubmit.bind(this)
@@ -51,19 +49,18 @@ export default class BookingFlights extends Component {
 
       onSubmit(e){
           e.preventDefault()
-          const searchinfo={checkin:this.state.startDate,checkout:this.state.endDate,location:this.state.location,number:this.state.number}
-          console.log(searchinfo)
-          bookflight = this.state.location
-          this.setState({submitted:true})
-          //async function fetchHotel(){
-          //var finalHotel=await axios.post('http://localhost:5000/hotel/search',bookflight)
-          //finalHotel=finalHotel.data
-          //return finalHotel
-          //}
+          const searchinfo={location:this.state.location,checkin:this.state.startDate,checkout:this.state.endDate,number:this.state.number}
+          axios.post('http://localhost:5000/hotel/search',searchinfo)
+          .then(res=>res.data)
+          .then(this.buildlist)
+          .catch()
       }
 
+      buildlist=(data)=>{
+        console.log(data)
+        this.setState({finalinfo:data})
+      }
   render() {
-    const hotelComponents = HotelsData.filter(hotel=>hotel.location===bookflight).map(hotel=><HotelComp key={hotel.id} name={hotel.name} country={hotel.country} imgurl={hotel.imgurl} url={hotel.url} location={hotel.location} address={hotel.address} rating={hotel.rating} ratingcount={hotel.ratingcount} price={hotel.price}/>)
     return (
         <div>
           <div className="./book-hotels.css"></div>
@@ -346,7 +343,8 @@ export default class BookingFlights extends Component {
                   <button type="submit" value="search" className="btn btn-primary">Search Hotels</button>
                 </form>
               </div>
-              {hotelComponents}
+              {this.state.finalinfo.length===0 && <h1>Please enter data</h1>}
+              {this.state.finalinfo.length>0 && this.state.finalinfo.map(hotel=><HotelComp key={hotel.id} name={hotel.name} country={hotel.country} imgurl={hotel.imgurl} url={hotel.url} location={hotel.location} address={hotel.address} rating={hotel.rating} ratingcount={hotel.ratingcount} price={hotel.price}/>)}
             </div>
           </div>
     )

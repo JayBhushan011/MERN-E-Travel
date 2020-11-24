@@ -33902,7 +33902,7 @@ const hotels=[
     },
     {
       "id": 2826,
-      "name": "Grand Palladium Bavaro Suites Resort & Spa All-inclusive Resort",
+      "name": "Grand Palladium Suites Resort & Spa All-inclusive Resort",
       "country": "Caribbean",
       "location": "Bavaro",
       "address": "Avda. Francia Sn Playas De Bavaro Higuey",
