@@ -4,6 +4,7 @@ import 'jquery/dist/jquery.min.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+// import Axios from 'axios'
 
 export default class Signup extends Component {
   constructor(props){
@@ -30,6 +31,7 @@ export default class Signup extends Component {
     this.onSubmit=this.onSubmit.bind(this)
 
     this.state={minDate:new Date(),maxDate:new Date(), title:null,gender:null,fname:'',lname:'',dob:new Date(),zcode:0,pnum:'',ped:new Date(),tdoc:null,add1:'',add2:'',city:'',state:null,mobile:0,email:'',username:'',password:''}
+
   }
 
   onChangeTitle(e){
@@ -106,6 +108,8 @@ onChangePassword(e){
 
     const signup={title:this.state.username,gender:this.state.gender,fname:this.state.fname,lname:this.state.lname,name:this.state.name,dob:this.state.dob,ped:this.state.ped,pnum:this.state.pnum,tdoc:this.state.tdoc,add1:this.state.add1,add2:this.state.add2,city:this.state.city,state:this.state.state,zcode:this.state.zcode,mobile:this.state.mobile,email:this.state.email,username:this.state.username,password:this.state.password}
     console.log(signup)
+
+
   }
   render() {
     const selectionRange = {
@@ -150,31 +154,31 @@ onChangePassword(e){
               <div className="row">
                 <div className="col">
                   <label>First name *</label>
-                  <input type="text" class="form-control" required value={this.state.Fname} onChange={this.onChangeFName} maxlength="30"/>
+                  <input type="text" class="form-control"  value={this.state.Fname} onChange={this.onChangeFName} maxlength="30"/>
                   <label className="blue">(As per passport)</label>
                 </div>
                 <div className="col">
                   <label>Last name *</label>
-                  <input type="text" class="form-control" required value={this.state.lname} onChange={this.onChangeLName} maxlength="30"/>
+                  <input type="text" class="form-control"  value={this.state.lname} onChange={this.onChangeLName} maxlength="30"/>
                   <label className="blue">(As per passport)</label>
                 </div>
               </div>
 
                   <label>Date of Birth (MM/DD/YYYY) *</label>
                   <br/>
-                  <DatePicker maxDate={this.state.maxDate} required selected={this.state.dob} onChange={this.onChangeDOB} showYearDropdown dateFormatCalendar="MMMM" yearDropdownItemNumber={15} scrollableYearDropdown/>
+                  <DatePicker maxDate={this.state.maxDate}  selected={this.state.dob} onChange={this.onChangeDOB} showYearDropdown dateFormatCalendar="MMMM" yearDropdownItemNumber={15} scrollableYearDropdown/>
               <br/>
               <br/>
               <h5>Travel Document:</h5>
               <div class="row">
                 <div class="col">
                   <label>Passport Number *</label>
-                  <input type="text" class="form-control" required value={this.state.pnum} onChange={this.onChangePassportNumber} maxlength="8"/>
+                  <input type="text" class="form-control"  value={this.state.pnum} onChange={this.onChangePassportNumber} maxlength="8"/>
                 </div>
                 <div class="col">
                   <label>Passport Expiry Date (MM/DD/YYYY) *</label>
                   <br/>
-                  <DatePicker minDate={this.state.minDate} required ranges={[selectionRange]} selected={this.state.ped} onChange={this.onChangePED} showYearDropdown dateFormatCalendar="MMMM" yearDropdownItemNumber={15} scrollableYearDropdown/>
+                  <DatePicker minDate={this.state.minDate}  ranges={[selectionRange]} selected={this.state.ped} onChange={this.onChangePED} showYearDropdown dateFormatCalendar="MMMM" yearDropdownItemNumber={15} scrollableYearDropdown/>
                 </div>
               </div>
               <br/>
@@ -182,27 +186,27 @@ onChangePassword(e){
               <br/>
               <label>Upload copy of travel document *</label>
               <br/>
-              <input type="file" id="img" name="img" accept="image/*" required value={this.state.tdoc} onChange={this.onChangeTDoc}></input>
+              <input type="file" id="img" name="img" accept="image/*"  value={this.state.tdoc} onChange={this.onChangeTDoc}></input>
               <br/>
               <br/>
               <h5>Communication Address:</h5>
               <br/>
               <div class="form-group">
     <label for="inputAddress">Address *</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required value={this.state.add1} onChange={this.onChangeAddress1}/>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"  value={this.state.add1} onChange={this.onChangeAddress1}/>
   </div>
   <div class="form-group">
     <label for="inputAddress2">Address 2 *</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" required value={this.state.add2} onChange={this.onChangeAddress2}/>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"  value={this.state.add2} onChange={this.onChangeAddress2}/>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">City *</label>
-      <input type="text" class="form-control" id="inputCity" required value={this.state.city} onChange={this.onChangeCity} maxlength="30"/>
+      <input type="text" class="form-control" id="inputCity"  value={this.state.city} onChange={this.onChangeCity} maxlength="30"/>
     </div>
     <div class="form-group col-md-4">
       <label for="inputState">State *</label>
-      <select id="inputState" class="form-control" required value={this.state.state} onChange={this.onChangeState}>
+      <select id="inputState" class="form-control"  value={this.state.state} onChange={this.onChangeState}>
         <option selected>Choose..</option>
         <option value="Andhra Pradesh">Andhra Pradesh</option>
 <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -245,11 +249,11 @@ onChangePassword(e){
     </div>
     <div class="form-group">
       <label for="inputZip">Zipcode *</label>
-      <input required type="number" class="form-control" maxlength="6" min="100000" id="inputZip" value={this.state.zcode} onChange={this.onChangeZCode} />
+      <input  type="number" class="form-control" maxlength="6" min="100000" id="inputZip" value={this.state.zcode} onChange={this.onChangeZCode} />
     </div>
     <div class="form-group">
       <label for="inputMobile">Mobile Number *</label>
-      <input required type="number" class="form-control" id="inputMobile" maxlength="10" min="1000000000" value={this.state.mobile} onChange={this.onChangeMobile} />
+      <input  type="number" class="form-control" id="inputMobile" maxlength="10" min="1000000000" value={this.state.mobile} onChange={this.onChangeMobile} />
     </div>
     <h5>If your age is 12 years and above, then please provide your own unique mobile number and email address/ID.</h5>
     <h5>Please ensure that the phone number / email id you provide is not linked to any existing member (If you are a child, you may provide your parents number).</h5>
@@ -257,21 +261,21 @@ onChangePassword(e){
     <div className="row">
                 <div className="col">
                   <label>Email address *</label>
-                  <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required value={this.state.email} onChange={this.onChangeEMail}/>
+                  <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"  value={this.state.email} onChange={this.onChangeEMail}/>
                   <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div className="col">
                   <label>Username *</label>
-                  <input type="text" className="form-control" placeholder="Enter Username" required value={this.state.username} onChange={this.onChangeUsername}></input>
+                  <input type="text" className="form-control" placeholder="Enter Username"  value={this.state.username} onChange={this.onChangeUsername}></input>
                 </div>
                 <div className="col">
                   <label>Password *</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required value={this.state.password} onChange={this.onChangePassword}/>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"  value={this.state.password} onChange={this.onChangePassword}/>
                 </div>
               </div>
       </div>
   <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1" required/>
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
     <label class="form-check-label" for="exampleCheck1">I have read and agreed to the terms and conditions of JAS Users Registration</label>
   </div>
   <br/>

@@ -1,14 +1,36 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
+const passport = require("passport");
+const passportLocal = require("passport-local").Strategy;
+const cookieParser = require("cookie-parser");
+const bcrypt = require("bcryptjs");
+const session = require("express-session");
+const bodyParser = require("body-parser");
 
 const app = express();
 
 const PORT = process.env.PORT || 5000
 
 
-app.use(cors());
+// Middlewear
+app.use(bodyParser.urlencoded({ extended : true}));
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true
+})
+);
+
 app.use(express.json());
+app.use(session({
+  secret: "secretcode",
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(cookieParser("secretcode"));
+app.use(passport.initialize());
+app.use(passport.session());
+require("./passportConfig")(passport);
 
 // Mongoose MongoDB Database Setup
 require('dotenv').config();
