@@ -16,6 +16,17 @@ const userSchema = new Schema ({
     trim: true,
     minlength: 6
   },
+  fName: String,
+  lName: String,
+  gender : String,
+  dateOfBirth : Date,
+  add1: String,
+  add2: String,
+  city: String,
+  state: String,
+  zcode: Number,
+  mobile: Number,
+  email: String,
 }, {
   timestamps: true,
 });
