@@ -4,6 +4,7 @@ import 'jquery/dist/jquery.min.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import moment from 'moment'
 import axios from 'axios'
 import HotelComp from './hotel-component'
 import HotelData from './hoteldata'
@@ -24,11 +25,13 @@ export default class BookingHotels extends Component {
               startDate: new Date(),
               endDate: new Date(),
               location:'',
+              days:1,
               number:1,
               minRating:1,
               maxPrice:100000000,
               finalinfo:[],
-              radio:false
+              radio:false,
+              rooms:1
             }
 
             this.onSubmit=this.onSubmit.bind(this)
@@ -73,11 +76,36 @@ export default class BookingHotels extends Component {
           .then(res=>res.data)
           .then(this.buildlist)
           .catch()
+
+          if(this.state.number===1){
+            this.setState({rooms:1})//Works
+          }
+          else if(this.state.number%2===1){
+            this.setState({rooms:(parseInt(this.state.number/2))+1})
+          }
+          else if(this.state.number%2===0){
+            this.setState({rooms:(this.state.number/2)})
+          }
+          var count=1
+          const start=this.state.startDate
+          const end=this.state.endDate
+          while(end>start){
+            count =count+1
+            start.setDate(start.getDate()+1)
+          }
+          this.setState({days:count})
+          this.setState({startDate:new Date()})
       }
 
       buildlist=(data)=>{
         this.setState({finalinfo:data})
       }
+
+      redirect(e){
+        e.preventDefault()
+        alert('Thank you for choosing JAS Travels')
+      }
+      
   render() {
     return (
         <div>
@@ -341,12 +369,12 @@ export default class BookingHotels extends Component {
                   <div className="col">
                     <label>Check In Date *</label>
                     <br/>
-                    <DatePicker required selected={this.state.startDate} showMonthDropdown startDate={this.state.startDate} onChange={this.handleChange1} showYearDropdown name="startdate" dateFormat="dd/MM/yyyy" selectsStart startDate={this.state.startDate} endDate={this.state.endDate} placeholder="Departure Date"/>
+                    <DatePicker required selected={this.state.startDate} showYearDropdown showMonthDropdown className="calendar" onChange={this.handleChange1} dateFormat="dd/MM/yyyy" minDate={new Date()}/>
                   </div>
                     <div className="col">
                       <label>Check Out Date *</label>
                       <br/>
-                      <DatePicker required selected={this.state.endDate} showMonthDropdown className="calendar" endDate={this.state.endDate} onChange={this.handleChange2} showYearDropdown name="enddate" dateFormat="dd/MM/yyyy" selectsEnd startDate={this.state.endtDate} endDate={this.state.endDate} minDate={this.state.startDate} placeholder="Arrival Date"/>
+                      <DatePicker required selected={this.state.endDate} showYearDropdown showMonthDropdown className="calendar" onChange={this.handleChange2} dateFormat="dd/MM/yyyy" selectsEnd startDate={this.state.endDate} endDate={this.state.endDate} minDate={this.state.startDate+1}/>
                     </div>
                   </div>
                 </div>
@@ -364,7 +392,7 @@ export default class BookingHotels extends Component {
                     </div>
                 </div>
                 <div className="center">
-                  <label for="maxprice">Maximum Price</label>
+                  <label for="maxprice">Maximum Price Per Room</label>
                     <div className="col-auto my-1">
                       <input type="number" id="maxprice" name="maxprice" min="1" max="100000000" onChange={this.onChangeMaxPrice}></input>
                     </div>
@@ -375,8 +403,9 @@ export default class BookingHotels extends Component {
                   <button type="submit" value="search" className="btn btn-primary">Search Hotels</button>
                 </form>
               </div>
-              {this.state.radio===false &&this.state.finalinfo.sort((a,b)=>a.rating-b.rating).map(hotel=><HotelComp key={hotel.id} name={hotel.name} country={hotel.country} imgurl={hotel.imgurl} url={hotel.url} location={hotel.location} address={hotel.address} rating={hotel.rating} ratingcount={hotel.ratingcount} price={hotel.price}/>)}
-              {this.state.radio===true &&this.state.finalinfo.sort((a,b)=>a.price-b.price).map(hotel=><HotelComp key={hotel.id} name={hotel.name} country={hotel.country} imgurl={hotel.imgurl} url={hotel.url} location={hotel.location} address={hotel.address} rating={hotel.rating} ratingcount={hotel.ratingcount} price={hotel.price}/>)}
+              <h5>Note: The price is calculated automatically based on the number of guests, hotel price, checkin and checkout dates</h5>
+              {this.state.radio===false &&this.state.finalinfo.sort((a,b)=>b.rating-a.rating).map(hotel=><HotelComp key={hotel.id} name={hotel.name} country={hotel.country} imgurl={hotel.imgurl} url={hotel.url} location={hotel.location} address={hotel.address} rating={hotel.rating} ratingcount={hotel.ratingcount} price={hotel.price*this.state.rooms*this.state.days} redirect={this.redirect}/>)}
+              {this.state.radio===true &&this.state.finalinfo.sort((a,b)=>a.price-b.price).map(hotel=><HotelComp key={hotel.id} name={hotel.name} country={hotel.country} imgurl={hotel.imgurl} url={hotel.url} location={hotel.location} address={hotel.address} rating={hotel.rating} ratingcount={hotel.ratingcount} price={hotel.price*this.state.rooms*this.state.days} redirect={this.redirect}/>)}
             </div>
           </div>
     )

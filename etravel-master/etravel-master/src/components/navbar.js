@@ -46,7 +46,8 @@ export default class Navbar extends Component {
             </div>
           </nav>
           <h1 className="heading">JAS TRAVELS</h1>
-          <img id="alliance" src="http://www.airindia.in/Images/new-star-allinace-logo.png" alt="Alliance"></img>
+          <br/>
+          <br/>
         </div>
       </div>
 )

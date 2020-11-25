@@ -27168,18 +27168,6 @@ const hotels=[
       "url": "https://www.tripadvisor.in/Hotel_Review-g187497-d234578-Reviews-Park_Hotel_Barcelona-Barcelona_Catalonia.html"
     },
     {
-      "id": 2265,
-      "name": "Hotel Amrey Sant Pau, Barcelona",
-      "country": "Spain",
-      "location": "Barcelona",
-      "address": "C / Sant Antoni Maria Claret, 173 Esquina Sant Quint'D",
-      "price": 2971,
-      "rating": 4,
-      "ratingcount": 883,
-      "imgurl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0a/78/e1/57/street--v11233955.jpg?w=900&amp;h=-1&amp;s=1",
-      "url": "https://www.tripadvisor.in/Hotel_Review-g187497-d234579-Reviews-Amrey_Sant_Pau-Barcelona_Catalonia.html"
-    },
-    {
       "id": 2266,
       "name": "Kimpton Nine Zero Hotel, Boston",
       "country": "United States",

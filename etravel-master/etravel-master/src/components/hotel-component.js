@@ -24,9 +24,9 @@ export default function HotelComp(props){
               <span>⭐️ {props.rating} ({props.ratingcount})</span>
               </div>
               <div className="column" id="shift">
-              <button type="submit" value="book" className="btn btn-primary">Book now</button>
+              <button onClick={props.redirect} type="submit" value="book" className="btn btn-primary">Book now</button>
               <br/>
-              <span className="price">₹ {props.price} /night/room</span>
+              <span className="price">₹ {props.price}</span>
               </div>
               </div>
           </div>
