@@ -33,7 +33,7 @@ export default class Signup extends Component {
     this.state={minDate:new Date(),maxDate:new Date(), title:null,gender:null,fname:'',lname:'',dob:new Date(),zcode:0,pnum:'',ped:new Date(),tdoc:null,add1:'',add2:'',city:'',state:null,mobile:0,email:'',username:'',password:''}
 
   }
-  
+
   onChangeTitle(e){
     this.setState({title:e.target.value})
 }
@@ -106,13 +106,26 @@ onChangePassword(e){
     //window.location='/login'
     event.preventDefault()
 
-    const signup={title:this.state.username,gender:this.state.gender,fname:this.state.fname,lname:this.state.lname,name:this.state.name,dob:this.state.dob,ped:this.state.ped,pnum:this.state.pnum,tdoc:this.state.tdoc,add1:this.state.add1,add2:this.state.add2,city:this.state.city,state:this.state.state,zcode:this.state.zcode,mobile:this.state.mobile,email:this.state.email,username:this.state.username,password:this.state.password}
+    const signup={title:this.state.title,gender:this.state.gender,fname:this.state.fname,lname:this.state.lname,name:this.state.name,dob:this.state.dob,ped:this.state.ped,pnum:this.state.pnum,tdoc:this.state.tdoc,add1:this.state.add1,add2:this.state.add2,city:this.state.city,state:this.state.state,zcode:this.state.zcode,mobile:this.state.mobile,email:this.state.email,username:this.state.username,password:this.state.password}
     console.log(signup)
     Axios({
       method: "POST",
       data: {
         "username": this.state.username,
         "password": this.state.password,
+        "title": this.state.title,
+        "fName" : this.state.fname,
+        "lName" : this.state.lname,
+        "dob": this.state.dob,
+        "gender" : this.state.gender,
+        "add1":this.state.add1,
+        "add2":this.state.add2,
+        "city":this.state.city,
+        "state":this.state.state,
+        "zcode":this.state.zcode,
+        "mobile":this.state.mobile,
+        "email":this.state.email,
+
       },
       url: "http://localhost:5000/user/add",
     })
@@ -129,7 +142,7 @@ onChangePassword(e){
       alert('Your account has been created')
     }
   }
-  
+
   render() {
     const selectionRange = {
       startDate: new Date(),
@@ -268,11 +281,11 @@ onChangePassword(e){
     </div>
     <div class="form-group">
       <label for="inputZip">Zipcode *</label>
-      <input  type="number" class="form-control" maxlength="6" min="100000" id="inputZip" value={this.state.zcode} onChange={this.onChangeZCode} />
+      <input  type="number" class="form-control" maxlength="6" min="0" id="inputZip" value={this.state.zcode} onChange={this.onChangeZCode} />
     </div>
     <div class="form-group">
       <label for="inputMobile">Mobile Number *</label>
-      <input  type="number" class="form-control" id="inputMobile" maxlength="10" min="1000000000" value={this.state.mobile} onChange={this.onChangeMobile} />
+      <input  type="number" class="form-control" id="inputMobile" maxlength="10" min="0" value={this.state.mobile} onChange={this.onChangeMobile} />
     </div>
     <h5>If your age is 12 years and above, then please provide your own unique mobile number and email address/ID.</h5>
     <h5>Please ensure that the phone number / email id you provide is not linked to any existing member (If you are a child, you may provide your parents number).</h5>

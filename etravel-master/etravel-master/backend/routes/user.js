@@ -25,6 +25,17 @@ router.route("/login").post((req, res) => {
 router.route('/add').post((req, res) => {
   const username = req.body.username;
   var password = req.body.password;
+  const fName = req.body.fName;
+  const lName = req.body.lName;
+  const gender = req.body.gender;
+  const dateOfBirth = Date.parse(req.body.dob);
+  const add1 = req.body.add1;
+  const add2 = req.body.add2;
+  const city = req.body.city;
+  const state = req.body.state;
+  const zcode = Number(req.body.zcode);
+  const mobile = Number(req.body.mobile);
+  const email = req.body.email;
 
   User.findOne({
     username: username
@@ -38,7 +49,18 @@ router.route('/add').post((req, res) => {
 
       const newUser = new User({
         username,
-        password
+        password,
+        fName,
+        lName,
+        gender,
+        dateOfBirth,
+        add1,
+        add2,
+        city,
+        state,
+        zcode,
+        mobile,
+        email,
       });
       newUser.save()
         .then(() => res.json('User added!'))
