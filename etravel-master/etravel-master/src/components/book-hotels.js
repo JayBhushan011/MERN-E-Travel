@@ -31,17 +31,16 @@ export default class BookingHotels extends Component {
               maxPrice:100000000,
               finalinfo:[],
               radio:false,
-              rooms:1
+              rooms:1,
+              mindate:new Date()
             }
 
             this.onSubmit=this.onSubmit.bind(this)
     }
 
-    handleChange1(date) {
-        this.setState({
-          startDate: date
-        })
-      }
+    handleChange1(date){this.setState({startDate: date})
+    this.setState({mindate:this.state.mindate.setDate(this.state.mindate.getDate()+1)})
+    console.log(this.state.mindate)}
 
       handleChange2(date) {
         this.setState({
@@ -78,7 +77,7 @@ export default class BookingHotels extends Component {
           .catch()
 
           if(this.state.number===1){
-            this.setState({rooms:1})//Works
+            this.setState({rooms:1})
           }
           else if(this.state.number%2===1){
             this.setState({rooms:(parseInt(this.state.number/2))+1})
@@ -93,7 +92,7 @@ export default class BookingHotels extends Component {
             count =count+1
             start.setDate(start.getDate()+1)
           }
-          this.setState({days:count})
+          this.setState({days:count-1})
           this.setState({startDate:new Date()})
       }
 
@@ -374,7 +373,7 @@ export default class BookingHotels extends Component {
                     <div className="col">
                       <label>Check Out Date *</label>
                       <br/>
-                      <DatePicker required selected={this.state.endDate} showYearDropdown showMonthDropdown className="calendar" onChange={this.handleChange2} dateFormat="dd/MM/yyyy" selectsEnd startDate={this.state.endDate} endDate={this.state.endDate} minDate={this.state.startDate+1}/>
+                      <DatePicker required selected={this.state.endDate} showYearDropdown showMonthDropdown className="calendar" onChange={this.handleChange2} dateFormat="dd/MM/yyyy" selectsEnd startDate={this.state.endDate} endDate={this.state.endDate} minDate={this.state.mindate}/>
                     </div>
                   </div>
                 </div>
