@@ -12,7 +12,7 @@ import HotelData from './hoteldata'
 export default class BookingHotels extends Component {
     constructor(props){
         super(props)
-        
+
             this.handleChange1 = this.handleChange1.bind(this)
             this.handleChange2 = this.handleChange2.bind(this)
             this.onChangeLocation = this.onChangeLocation.bind(this)
@@ -102,9 +102,30 @@ export default class BookingHotels extends Component {
 
       redirect(e){
         e.preventDefault()
-        alert('Thank you for choosing JAS Travels')
+        axios({
+          method: "GET",
+          withCredentials: true,
+          url: "http://localhost:5000/user/checkLogIn",
+        }).then((res) => {
+          var userObject = res.data;
+          if(res.data === "Please Log In"){
+            alert(' Please Log In first ');
+            window.location = "/login";
+          }
+          else{
+            const hotelBooked = {hotelBooked : "5fba1b311930e90ec6c1088a"}
+            axios.post('http://localhost:5000/user/addToHistory',hotelBooked)
+            .then(res=>res.data)
+            alert('Thank you for choosing JAS Travels');
+          }
+        });
+
+
+
       }
-      
+
+
+
   render() {
     return (
         <div>

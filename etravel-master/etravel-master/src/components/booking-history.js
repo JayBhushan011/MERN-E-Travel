@@ -4,7 +4,7 @@
 import './login.css'
 import 'jquery/dist/jquery.min.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
-
+import HotelComp from './hotel-component'
 
 
 import React, { useState } from "react";
@@ -12,71 +12,47 @@ import Axios from "axios";
 
 
 
-function Login() {
-  const [loginUsername, setLoginUsername] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
+function BookingHistory() {
   const [data, setData] = useState(null);
+  var hotel = [];
 
-
-  const login = () => {
-    Axios({
-      method: "POST",
-      data: {
-        username: loginUsername,
-        password: loginPassword,
-      },
-      withCredentials: true,
-      url: "http://localhost:5000/user/login",
-    }).then(res => res.data)
-    .then(logininfo)
-  };
-
-  const logininfo=(data)=>{
-    if(data==='Successfully Authenticated'){
-      alert('You have logged in');
-      window.location='/'
-    }
-    else{
-      alert('Invalid user data, please try again!')
-    }
-  }
-  const getUser = () => {
+  const bookingHistory = () => {
     Axios({
       method: "GET",
       withCredentials: true,
-      url: "http://localhost:5000/user/get",
+      url: "http://localhost:5000/user/checkLogIn",
     }).then((res) => {
-      setData(res.data);
-      console.log(res.data);
-    });
-  };
+
+        if(res.data === "Please Log In"){
+        alert(' Please Log In first ');
+        window.location = "/login";
+        }
+        else{
+
+          Axios({method:"GET", url : "http://localhost:5000/user/bookingHistory",
+        }).then((res) => {
+          console.log(res.data);
+          hotel = res.data;
+          console.log(hotel);
+
+      })
+    }
+    
+  });
+}
+
+
   return (
     <div>
-          <div className="./login.css"></div>
-            <div className="container">
-            <h3>Log in</h3>
               <div className="form-group">
-                 <label>Username: </label>
-                   <input type="text" required className="form-control"
-                   placeholder="username"
-                   onChange={(e) => setLoginUsername(e.target.value)}/>
-              </div>
-              <div className="form-group">
-                <label>Password: </label>
-                <input type="password" required className="form-control"
-                placeholder="password"
-                onChange={(e) => setLoginPassword(e.target.value)}/>
-              </div>
-              <div className="form-group">
-                <button onClick={login} className="btn btn-primary">Submit</button>
-                {data ? <h1>Welcome Back {data.username}</h1> : null}
+                <button onClick={bookingHistory} className="btn btn-primary"> See your booking history </button>
+                {hotel.map(hotel=><HotelComp key={hotel.id} name={hotel.name} country={hotel.country} imgurl={hotel.imgurl} url={hotel.url} location={hotel.location} address={hotel.address} rating={hotel.rating} ratingcount={hotel.ratingcount} price={hotel.price}/>)}
               </div>
             </div>
-          </div>
   );
 }
 
-export default Login;
+export default BookingHistory;
 
 //
 // export default class Login extends Component {

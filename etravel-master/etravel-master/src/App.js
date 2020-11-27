@@ -9,6 +9,7 @@ import Login from "./components/login"
 import LoggedIn from "./components/loggedin"
 import SignUp from "./components/sign-up"
 import BookHotels from "./components/book-hotels"
+import BookingHistory from "./components/booking-history"
 
 function App() {
  return (
@@ -20,6 +21,7 @@ function App() {
     <Route path="/loggedin" exact component={LoggedIn}/>
     <Route path="/sign-up" exact component={SignUp}/>
     <Route path="/book-hotels" exact component={BookHotels}/>
+    <Route path="/bookingHistory" exact component={BookingHistory}/>
 
    </Router>
  );

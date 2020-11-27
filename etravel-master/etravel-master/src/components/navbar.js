@@ -38,6 +38,9 @@ export default class Navbar extends Component {
                 <li class="nav-item active">
                   <a class="nav-link" href="/book-hotels">Book Hotels<span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/bookingHistory">Booking History<span class="sr-only">(current)</span></a>
+                </li>
               </ul>
               <form className="form-inline my-2 my-lg-0">
                 <input className="form-control mr-sm-2" type="search" aria-label="Search"></input>

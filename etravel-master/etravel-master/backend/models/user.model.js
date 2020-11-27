@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema ({
@@ -27,6 +28,7 @@ const userSchema = new Schema ({
   zcode: Number,
   mobile: Number,
   email: String,
+  hotelsBooked : [{type: String}],
 }, {
   timestamps: true,
 });
