@@ -9,12 +9,12 @@ import HotelComp from './hotel-component'
 
 import React, { useState } from "react";
 import Axios from "axios";
-
+var hotel = [];
 
 
 function BookingHistory() {
   const [data, setData] = useState(null);
-  var hotel = [];
+
 
   const bookingHistory = () => {
     Axios({
@@ -31,13 +31,14 @@ function BookingHistory() {
 
           Axios({method:"GET", url : "http://localhost:5000/user/bookingHistory",
         }).then((res) => {
-          console.log(res.data);
+
           hotel = res.data;
+          setData(hotel);
           console.log(hotel);
 
       })
     }
-    
+
   });
 }
 
