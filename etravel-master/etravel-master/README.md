@@ -1,3 +1,15 @@
+We (Jay Bhushan and Saravana Chilamakuri) would like to thank Koishore for providing a list of hotels and their respective Tripadvisor URLs from which we scraped through to create our own Hotel Database.
+
+We again would like to thank all the TAs and the professor for providing an opportunity to learn and helping us whenever we needed it.
+
+During the course of the project, we used the following tutorials and resources as frameworks to work with:
+
+1. https://www.youtube.com/watch?v=DLX62G4lc44&t=16939s
+2. https://www.youtube.com/watch?v=7CqJlxBYj-M&t=4894s
+3. https://www.youtube.com/watch?v=RGOj5yH7evk
+4. http://www.passportjs.org/
+5. https://www.mongodb.com/cloud/atlas
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
