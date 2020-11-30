@@ -1,9 +1,1 @@
-.BUTTON_WHZ {position: absolute;top: 50%;-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;color: #FFFFFF;font-family: Open Sans;font-size: 34px;
-    background-color: rgba(233, 58, 33, 0.95);
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    text-align: center;}
- .BUTTON_WHZ:hover {background: #EE6817;border: solid #FFAE00 0;-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;text-decoration: none;}
- .wrapper{text-align: center;}
  .form-group .form-control{position: relative;width: 300px;}

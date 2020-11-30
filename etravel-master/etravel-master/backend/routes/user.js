@@ -7,6 +7,11 @@ let Hotel = require('../models/hotel.model');
 var theUser;
 var hotels = [];
 
+router.route('/logout').get((req,res)=>{
+req.logout()
+res.redirect('/')
+})
+
 router.route('/get').get((req, res) => {
   res.send(req.user);
 });

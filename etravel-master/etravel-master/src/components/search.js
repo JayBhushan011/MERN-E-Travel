@@ -39,6 +39,7 @@ export default class Search extends Component{
         return(
             <div className="flyout">
             <div className="container">
+              <h3>Search</h3>
                 <div className="form-group">
                 <input onChange={this.onChange} value={this.state.search} className="form-control" type="search" placeholder="Search Hotels"/>
             </div>

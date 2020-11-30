@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './sign-up.css'
 import 'jquery/dist/jquery.min.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
-import DatePicker from 'react-datepicker'
+import DatePicker from 'react-datepicker'//https://bootstrap-datepicker.readthedocs.io/en/latest/
 import 'react-datepicker/dist/react-datepicker.css'
 import Axios from 'axios'
 
@@ -103,7 +103,6 @@ onChangePassword(e){
 }
 
   onSubmit(event) {
-    //window.location='/login'
     event.preventDefault()
 
     const signup={title:this.state.title,gender:this.state.gender,fname:this.state.fname,lname:this.state.lname,name:this.state.name,dob:this.state.dob,ped:this.state.ped,pnum:this.state.pnum,tdoc:this.state.tdoc,add1:this.state.add1,add2:this.state.add2,city:this.state.city,state:this.state.state,zcode:this.state.zcode,mobile:this.state.mobile,email:this.state.email,username:this.state.username,password:this.state.password}
@@ -147,7 +146,7 @@ onChangePassword(e){
     const selectionRange = {
       startDate: new Date(),
       endDate: new Date(),
-      key: 'selection',
+      key: 'selection',//https://jsfiddle.net/anushach/w6cbpf28/
     }
     return (
       <div>
@@ -156,7 +155,7 @@ onChangePassword(e){
             <h4>JAS Account Registration</h4>
             <h5>Required Account Information</h5>
           <form onSubmit={this.onSubmit}>
-            <div class="form-group">
+            <div class="form-group">{/*These components have been used from Bootstrap*/}
               <div class="form-row align-items-center">
                 <div class="col-auto my-1">
                   <label class="mr-sm-2" for="inlineFormCustomSelect">Title *</label>
@@ -287,9 +286,6 @@ onChangePassword(e){
       <label for="inputMobile">Mobile Number *</label>
       <input  type="number" class="form-control" id="inputMobile" maxlength="10" min="0" value={this.state.mobile} onChange={this.onChangeMobile} />
     </div>
-    <h5>If your age is 12 years and above, then please provide your own unique mobile number and email address/ID.</h5>
-    <h5>Please ensure that the phone number / email id you provide is not linked to any existing member (If you are a child, you may provide your parents number).</h5>
-
     <div className="row">
                 <div className="col">
                   <label>Email address *</label>

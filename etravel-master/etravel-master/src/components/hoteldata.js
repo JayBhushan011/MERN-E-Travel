@@ -1,3 +1,4 @@
+//Created from the database of name of hotels and their respective URLs provided by Koishore. Used https://www.youtube.com/watch?v=s1XiCh-mGCA for reading and writing into a CSV file and https://www.youtube.com/watch?v=XVv6mJpFOb0 for using BeautifulSoup itself
 const hotels=[
     {
       "id": 1,

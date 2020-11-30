@@ -6,7 +6,6 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import axios from 'axios'
 import HotelComp from './hotel-component'
-import HotelData from './hoteldata'
 
 export default class BookingHotels extends Component {
     constructor(props){
@@ -106,7 +105,6 @@ export default class BookingHotels extends Component {
           withCredentials: true,
           url: "http://localhost:5000/user/checkLogIn",
         }).then((res) => {
-          var userObject = res.data;
           if(res.data === "Please Log In"){
             alert(' Please Log In first ');
             window.location = "/login";
@@ -115,21 +113,17 @@ export default class BookingHotels extends Component {
             const hotelBooked = {hotelBooked : "5fba1b311930e90ec6c1088a"}
             axios.post('http://localhost:5000/user/addToHistory',hotelBooked)
             .then(res=>res.data)
-            alert('Thank you for choosing JAS Travels');
+            alert('Your reservation is confirmed. You will get a confirmation email');
           }
         });
 
-
-
       }
-
-
 
   render() {
     return (
         <div>
           <div className="./book-hotels.css"></div>
-            <div className="box container">
+            <div className="container">
              <div className="arrange">
               <h1 className="subheading">JAS Travels</h1>
               <h3>Book Hotels</h3>
@@ -421,8 +415,10 @@ export default class BookingHotels extends Component {
                 <br/>
                   <button type="submit" value="search" className="btn btn-primary">Search Hotels</button>
                 </form>
+                <br/>
+                <br/>
+                <h5>Note: The price is calculated automatically based on the number of guests, hotel price, checkin and checkout dates</h5>
               </div>
-              <h5>Note: The price is calculated automatically based on the number of guests, hotel price, checkin and checkout dates</h5>
               {this.state.radio===false &&this.state.finalinfo.sort((a,b)=>b.rating-a.rating).map(hotel=><HotelComp key={hotel.id} name={hotel.name} country={hotel.country} imgurl={hotel.imgurl} url={hotel.url} location={hotel.location} address={hotel.address} rating={hotel.rating} ratingcount={hotel.ratingcount} price={hotel.price*this.state.rooms*this.state.days} redirect={this.redirect}/>)}
               {this.state.radio===true &&this.state.finalinfo.sort((a,b)=>a.price-b.price).map(hotel=><HotelComp key={hotel.id} name={hotel.name} country={hotel.country} imgurl={hotel.imgurl} url={hotel.url} location={hotel.location} address={hotel.address} rating={hotel.rating} ratingcount={hotel.ratingcount} price={hotel.price*this.state.rooms*this.state.days} redirect={this.redirect}/>)}
             </div>

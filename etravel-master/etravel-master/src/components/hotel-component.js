@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import 'jquery/dist/jquery.min.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import './hotel-component.css'
-
 export default function HotelComp(props){
   return(
       <div className="container">
@@ -21,7 +20,7 @@ export default function HotelComp(props){
               <span className="address">{props.address}</span>
               <br/>
               <br/>
-              <span>⭐️ {props.rating} ({props.ratingcount})</span>
+              <span>⭐ {props.rating} ({props.ratingcount})</span>
               </div>
               <div className="column" id="shift">
               <button onClick={props.redirect} type="submit" value="book" className="btn btn-primary">Book now</button>
