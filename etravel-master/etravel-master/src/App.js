@@ -9,6 +9,7 @@ import SignUp from "./components/sign-up"
 import BookHotels from "./components/book-hotels"
 import BookingHistory from "./components/booking-history"
 import Search from './components/search'
+import BookFlights from "./components/book-flights"
 
 function App() {
  return (
@@ -20,7 +21,7 @@ function App() {
     <Route path="/book-hotels" exact component={BookHotels}/>
     <Route path="/bookingHistory" exact component={BookingHistory}/>
     <Route path="/search" exact component={Search}/>
-
+    <Route path="/book-flights" exact component={BookFlights}/>
    </Router>
  );
 }

@@ -43,6 +43,10 @@ connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
 
+// Amadeus Flight
+const flightRouter = require('./routes/flight');
+app.use('/flights', flightRouter);
+
 // *********
 
 

@@ -52,6 +52,9 @@ export default class Navbar extends Component{
                 <li class="nav-item active">
                   <a class="nav-link" href="/book-hotels">Book Hotels<span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/book-flights">Book Flights<span class="sr-only">(current)</span></a>
+                </li>
                 {/*<li class="nav-item active">
                   <a class="nav-link" href="/bookingHistory">Booking History<span class="sr-only">(current)</span></a>
     </li>*/}
