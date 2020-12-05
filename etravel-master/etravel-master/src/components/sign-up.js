@@ -137,6 +137,7 @@ onChangePassword(e){
       alert('Username unavailable. Please try another one')
     }
     else{
+      console.log(data)
       window.location='/login'
       alert('Your account has been created')
     }
